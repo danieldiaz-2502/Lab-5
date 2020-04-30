@@ -4,6 +4,7 @@ let pasar;
 let numero;
 let cuadradoAzul = [];
 let num = numero;
+let cosasDcosas;
 
 function setup() {
     createCanvas(700, 400);
@@ -95,26 +96,16 @@ function crearCuadrados() {
 }
 
 function arreglo() {
+    for (var i = 0; i < numero; i++) {
+        numero = num[i];
+    }
     for (let i = 0; i < numero; i++) {
         cuadradoAzul.push(new Azul());
     }
 }
 
 function agregar() {
-    if (numero < 10) {
-        for (var i = 0; i < cuadradoAzul.length; i++) {
-            var cosas = cuadradoAzul[i];
-            cosas++;
-        }
-    } else {
-        try {
-
-            throw new MyException('No puedes agregar mas elemento');
-
-        } catch (e) {
-            console.log(e);
-        };
-
-    }
-
+    cosasDcosas = new Azul();
+    cuadradoAzul.push(cosasDcosas);
 }
+
