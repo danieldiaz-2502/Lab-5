@@ -2,8 +2,9 @@ let pantalla;
 let numero;
 let cuadradoAzul = [];
 let num = numero;
-let cosasDcosas;
 let algo;
+let eliminado;
+let diametro;
 
 function setup() {
     createCanvas(700, 400);
@@ -12,6 +13,7 @@ function setup() {
     for (var i = 0; i < numero; i++) {
         numero = num[i];
     }
+    diametro = 30;
 }
 
 function draw() {
@@ -73,18 +75,16 @@ function mousePressed() {
             break;
         case 1:
             if (mouseX > 30 && mouseX < 130 && mouseY > 30 && mouseY < 60) {
-                cuadradoAzul.push(new Azul());
+                cuadradoAzul.push(new Azul(random(width),100,1,diametro,2));
             }
             if (mouseX > 140 && mouseX < 240 && mouseY > 30 && mouseY < 60) {
-                for (var i = 0; i < cuadradoAzul.length; i++) {
-                    numero = num[i];
-                }
+                cuadradoAzul.pop(eliminado);
             }
             if (mouseX > 250 && mouseX < 350 && mouseY > 30 && mouseY < 60) {
-                cuadradoAzul.push(new Azul());
+                cuadradoAzul.forEach(doblar);
             }
             if (mouseX > 360 && mouseX < 460 && mouseY > 30 && mouseY < 60) {
-                cuadradoAzul.push(new Azul());
+                
             }
             break;
     }
@@ -127,8 +127,11 @@ function arreglo() {
         numero = algo[i];
     }
     for (let i = 0; i < algo; i++) {
-        cuadradoAzul.push(new Azul());
+        cuadradoAzul.push(new Azul(random(width),100,1,diametro,2));
     }
+}
+function doblar(element,index,array){
+    array[index].setDiameter(array[index].getDiameter()*2);
 }
 
 

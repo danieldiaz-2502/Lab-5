@@ -1,15 +1,14 @@
 class Azul {
-    constructor() {
-        this.x = random(width);
-        this.y = (1, 100);
-        this.disX = 1;
-        this.diameter = 30;
-        this.speed = 2;
+    constructor(x,y,disX,diameter,speed) {
+        this.x = x;
+        this.y = y;
+        this.disX = disX;
+        this.diameter = diameter;
+        this.speed = speed;
     }
 
     move() {
         this.x += this.speed;
-        this.y += 0;
 
         if (this.x > width - 30) {
             this.speed = -2;
@@ -22,5 +21,11 @@ class Azul {
     display() {
         fill(0, 0, 255);
         rect(this.x, this.y, this.diameter, this.diameter);
+    }
+    setDiameter(diameter){
+        this.diameter = diameter;
+    }
+    getDiameter(){
+        return this.diameter;
     }
 }
