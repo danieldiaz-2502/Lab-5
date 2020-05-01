@@ -39,16 +39,16 @@ function draw() {
             break;
         case 1:
             crearCuadrados();
-            fill (0);
-            rect(30,30,100,30);
-            rect(140,30,100,30);
-            rect(250,30,100,30);
-            rect(360,30,100,30);
+            fill(0);
+            rect(30, 30, 100, 30);
+            rect(140, 30, 100, 30);
+            rect(250, 30, 100, 30);
+            rect(360, 30, 100, 30);
             fill(250);
-            text('Agregar',45,50);
-            text('Eliminar',155,50);
-            text('Doblar',270,50);
-            text('Circulos',375,50);
+            text('Agregar', 45, 50);
+            text('Eliminar', 155, 50);
+            text('Doblar', 270, 50);
+            text('Circulos', 375, 50);
             break;
     }
 }
@@ -72,7 +72,18 @@ function mousePressed() {
             }
             break;
         case 1:
-            if (numero < 10 && mouseX > 30 && mouseX < 130 && mouseY > 30 && mouseY < 60) {
+            if (mouseX > 30 && mouseX < 130 && mouseY > 30 && mouseY < 60) {
+                cuadradoAzul.push(new Azul());
+            }
+            if (mouseX > 140 && mouseX < 240 && mouseY > 30 && mouseY < 60) {
+                for (var i = 0; i < cuadradoAzul.length; i++) {
+                    numero = num[i];
+                }
+            }
+            if (mouseX > 250 && mouseX < 350 && mouseY > 30 && mouseY < 60) {
+                cuadradoAzul.push(new Azul());
+            }
+            if (mouseX > 360 && mouseX < 460 && mouseY > 30 && mouseY < 60) {
                 cuadradoAzul.push(new Azul());
             }
             break;
