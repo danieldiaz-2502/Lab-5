@@ -1,17 +1,14 @@
-console.log('entro');
 let pantalla;
-let pasar;
 let numero;
 let cuadradoAzul = [];
 let num = numero;
 let cosasDcosas;
+let algo;
 
 function setup() {
     createCanvas(700, 400);
     pantalla = 0;
-    pasar = false;
     numero = 0;
-
     for (var i = 0; i < numero; i++) {
         numero = num[i];
     }
@@ -42,29 +39,46 @@ function draw() {
             break;
         case 1:
             crearCuadrados();
+            fill (0);
+            rect(30,30,100,30);
+            rect(140,30,100,30);
+            rect(250,30,100,30);
+            rect(360,30,100,30);
+            fill(250);
+            text('Agregar',45,50);
+            text('Eliminar',155,50);
+            text('Doblar',270,50);
+            text('Circulos',375,50);
             break;
     }
 }
 
 function mousePressed() {
-    if (pantalla == 1) {
-        agregar();
-    }
-    if (mouseX >= 100 && mouseX <= 200 && mouseY >= 370 && mouseY <= 390) {
-        continuar();
-        if (numero <= 10 && numero >= 1) {
-            arreglo();
-        }
-    }
-    //aumentar
-    if (mouseX >= 10 && mouseX <= 110 && mouseY >= 170 && mouseY <= 190) {
-        numero++;
-    }
-    //disminuir
-    if (mouseX >= 120 && mouseX <= 220 && mouseY >= 170 && mouseY <= 190) {
-        numero--;
+    switch (pantalla) {
+        case 0:
+            if (mouseX >= 100 && mouseX <= 200 && mouseY >= 370 && mouseY <= 390) {
+                continuar();
+                if (numero <= 10 && numero >= 1) {
+                    arreglo();
+                }
+            }
+            //aumentar
+            if (mouseX >= 10 && mouseX <= 110 && mouseY >= 170 && mouseY <= 190) {
+                numero++;
+            }
+            //disminuir
+            if (mouseX >= 120 && mouseX <= 220 && mouseY >= 170 && mouseY <= 190) {
+                numero--;
+            }
+            break;
+        case 1:
+            if (numero < 10 && mouseX > 30 && mouseX < 130 && mouseY > 30 && mouseY < 60) {
+                cuadradoAzul.push(new Azul());
+            }
+            break;
     }
 }
+
 
 function continuar() {
     try {
@@ -96,16 +110,15 @@ function crearCuadrados() {
 }
 
 function arreglo() {
-    for (var i = 0; i < numero; i++) {
-        numero = num[i];
+    algo = numero;
+
+    for (let i = 0; i < algo.length; i++) {
+        numero = algo[i];
     }
-    for (let i = 0; i < numero; i++) {
+    for (let i = 0; i < algo; i++) {
         cuadradoAzul.push(new Azul());
     }
 }
 
-function agregar() {
-    cosasDcosas = new Azul();
-    cuadradoAzul.push(cosasDcosas);
-}
+
 
