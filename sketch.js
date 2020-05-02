@@ -1,8 +1,10 @@
 let pantalla;
 let numero;
 let cuadradoAzul = [];
+let circulos = [];
 let num = numero;
-let algo;
+let aparecer;
+let algo;;
 let eliminado;
 let diametro;
 
@@ -14,6 +16,7 @@ function setup() {
         numero = num[i];
     }
     diametro = 30;
+    aparecer = false;
 }
 
 function draw() {
@@ -36,10 +39,15 @@ function draw() {
             fill(0);
             textSize(10);
             text("Disminuir", 145, 185);
-            textSize(20);
+            textSize(50);
             text(numero, 50, 50);
             break;
         case 1:
+            for (let i = 0; i < circulos.length; i++) {
+                circulos[i].display();
+                circulos[i].move();
+            }
+            textSize(20);
             crearCuadrados();
             fill(0);
             rect(30, 30, 100, 30);
@@ -75,16 +83,26 @@ function mousePressed() {
             break;
         case 1:
             if (mouseX > 30 && mouseX < 130 && mouseY > 30 && mouseY < 60) {
-                cuadradoAzul.push(new Azul(random(width),100,1,diametro,2));
+                cuadradoAzul.push(new Azul(random(width), 100, 1, diametro, 2));
+                if (aparecer== true){
+                    circulos.push(new Circulo(random(width), 300, 1, diametro, 2));
+                }
             }
             if (mouseX > 140 && mouseX < 240 && mouseY > 30 && mouseY < 60) {
                 cuadradoAzul.pop(eliminado);
+                if (aparecer== true){
+                    circulos.pop(eliminado);
+                }
             }
             if (mouseX > 250 && mouseX < 350 && mouseY > 30 && mouseY < 60) {
                 cuadradoAzul.forEach(doblar);
+                if (aparecer== true){
+                    circulos.forEach(doblar);
+                }
             }
             if (mouseX > 360 && mouseX < 460 && mouseY > 30 && mouseY < 60) {
-                
+                cuadradoAzul.map(agregarCirculos);
+                aparecer = true;
             }
             break;
     }
@@ -113,7 +131,6 @@ function validateInputs(numero) {
 }
 
 function crearCuadrados() {
-    // Create objects
     for (let i = 0; i < cuadradoAzul.length; i++) {
         cuadradoAzul[i].display();
         cuadradoAzul[i].move();
@@ -127,11 +144,18 @@ function arreglo() {
         numero = algo[i];
     }
     for (let i = 0; i < algo; i++) {
-        cuadradoAzul.push(new Azul(random(width),100,1,diametro,2));
+        cuadradoAzul.push(new Azul(random(width), 100, 1, diametro, 2));
     }
 }
-function doblar(element,index,array){
-    array[index].setDiameter(array[index].getDiameter()*2);
+function agregarCirculos(element,index,array){
+
+    circulos.push(new Circulo(random(width)*index, 300, 1, diametro, 2));
+
+
+}
+
+function doblar(element, index, array) {
+    array[index].setDiameter(array[index].getDiameter() * 2);
 }
 
 
